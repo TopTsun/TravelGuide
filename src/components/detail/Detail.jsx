@@ -1,11 +1,8 @@
 import { useState } from "react";
 import "./detail.css";
+import { MapRef } from "../map/Map";
 
 const Detail = () => {
-  // TODO
-  // Fly to marker on click
-  // TODO
-
   const [markers, setMarkers] = useState(JSON.parse(localStorage.getItem("markers")) || []);
   const [events] = useState(["storageDetail", "storage"]);
   const [input, setInput] = useState("");
@@ -62,6 +59,12 @@ const Detail = () => {
     }
   };
 
+  const handleFlyTo = function (e) {
+    const latlng = e.target.nextSibling.innerText.split(", ").map((c) => +c);
+
+    MapRef.target.flyTo(latlng, 12, { duration: 2 });
+  };
+
   const filteredMarkers = markers.filter((c) => c.popUp.toLowerCase().includes(input.toLowerCase()));
 
   return (
@@ -75,7 +78,7 @@ const Detail = () => {
         <div className="marker" key={m.geocode.join("-")}>
           <h2>{m.popUp}</h2>
           <p>
-            <span>
+            <span onClick={handleFlyTo}>
               {m.geocode[0].toFixed(3)}, {m.geocode[1].toFixed(3)}
             </span>
             <span className="geocode">

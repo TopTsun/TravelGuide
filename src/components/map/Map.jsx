@@ -3,8 +3,9 @@ import "leaflet/dist/leaflet.css";
 import { Icon, divIcon, point } from "leaflet";
 import { MapContainer, Marker, TileLayer, Popup, useMapEvents, useMap } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-markercluster";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
+export let MapRef;
 const Map = () => {
   const defaultMarkers = [
     { geocode: [48.14251611201301, 8.020554601665935], popUp: "Vlad" },
@@ -70,7 +71,13 @@ const Map = () => {
 
   return (
     <div className="map">
-      <MapContainer center={[48.142513132254685, 8.020603345827292]} zoom={16} zoomSnap={0.1} wheelDebounceTime={100}>
+      <MapContainer
+        center={[48.142513132254685, 8.020603345827292]}
+        zoom={16}
+        zoomSnap={0.1}
+        wheelDebounceTime={100}
+        whenReady={(map) => (MapRef = map)}
+      >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -85,7 +92,6 @@ const Map = () => {
               eventHandlers={{
                 // important
                 mouseover: (e) => e.target.openPopup(),
-                click: (e) => {},
               }}
             >
               <Popup>
