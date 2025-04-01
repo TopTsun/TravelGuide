@@ -3,6 +3,9 @@ import "./detail.css";
 import { MapRef } from "../map/Map";
 
 const Detail = () => {
+  // important
+  // Button position absolute, div height 90%
+  // important
   const [markers, setMarkers] = useState(JSON.parse(localStorage.getItem("markers")) || []);
   const [events] = useState(["storageDetail", "storage"]);
   const [input, setInput] = useState("");
@@ -89,6 +92,7 @@ const Detail = () => {
           </p>
         </div>
       ))}
+      <button>Add location</button>
     </div>
   );
 };

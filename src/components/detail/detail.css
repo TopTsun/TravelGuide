@@ -69,6 +69,14 @@
     }
   }
 
+  button {
+    padding: 2rem;
+    background: gray;
+    position: sticky;
+    bottom: 0;
+    top: auto;
+  }
+
   ::-webkit-scrollbar {
     width: 10px;
   }
