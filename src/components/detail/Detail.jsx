@@ -3,9 +3,6 @@ import "./detail.css";
 import { MapRef } from "../map/Map";
 
 const Detail = () => {
-  // important
-  // Button position absolute, div height 90%
-  // important
   const [markers, setMarkers] = useState(JSON.parse(localStorage.getItem("markers")) || []);
   const [events] = useState(["storageDetail", "storage"]);
   const [input, setInput] = useState("");
@@ -68,6 +65,30 @@ const Detail = () => {
     MapRef.target.flyTo(latlng, 12, { duration: 2 });
   };
 
+  const getLoc = () => {
+    if (navigator.geolocation && !JSON.parse(localStorage.getItem("location"))) {
+      let q = prompt(
+        "Can we get your location (show's your position if there are no markers, you only give it once)? Y or N"
+      );
+      if (!q || q == "N") return;
+
+      while (q.length > 1 || q != "Y") {
+        alert("Type Y or N");
+        q = prompt("Can we get your location? Y or N ");
+      }
+
+      navigator.geolocation.getCurrentPosition(
+        function (e) {
+          localStorage.setItem("location", JSON.stringify([e.coords.latitude, e.coords.longitude]));
+          window.location.reload();
+        },
+        function () {
+          alert("Could not get your position");
+        }
+      );
+    }
+  };
+
   const filteredMarkers = markers.filter((c) => c.popUp.toLowerCase().includes(input.toLowerCase()));
 
   return (
@@ -92,7 +113,7 @@ const Detail = () => {
           </p>
         </div>
       ))}
-      <button>Add location</button>
+      {JSON.parse(localStorage.getItem("location")) ? "" : <button onClick={getLoc}>Add location</button>}
     </div>
   );
 };

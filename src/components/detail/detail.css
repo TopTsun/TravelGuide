@@ -70,11 +70,18 @@
   }
 
   button {
-    padding: 2rem;
-    background: gray;
-    position: sticky;
-    bottom: 0;
-    top: auto;
+    max-width: 430px;
+    background-color: rgba(69, 160, 96, 0.75);
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 20px;
+
+    margin-bottom: 5px;
+    font-size: 20px;
+    cursor: pointer;
   }
 
   ::-webkit-scrollbar {

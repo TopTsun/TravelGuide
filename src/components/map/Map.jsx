@@ -6,12 +6,8 @@ import MarkerClusterGroup from "react-leaflet-markercluster";
 import { useEffect, useState } from "react";
 
 export let MapRef;
-const Map = () => {
-  // important
-  // button for location, if location exists in local storage dont show button, if not exists onclick getLoc
-  // isloaded ? style = {} : style = {}
-  // important
 
+const Map = () => {
   const defaultMarkers = [
     { geocode: [48.14251611201301, 8.020554601665935], popUp: "Vlad" },
     { geocode: [45.786612, 24.144885], popUp: "Yarik" },
@@ -28,30 +24,6 @@ const Map = () => {
   const [centerCoords] = useState(
     JSON.parse(localStorage.getItem("location")) || [48.142513132254685, 8.020603345827292]
   );
-
-  const getLoc = () => {
-    if (navigator.geolocation && !JSON.parse(localStorage.getItem("location"))) {
-      let q = prompt("Can we get your location (It's optional)? Y or N ");
-      if (!q || q == "N") {
-        localStorage.setItem("location", JSON.stringify([48.142513132254685, 8.020603345827292]));
-
-        return;
-      }
-      while (q.length > 1 || q != "Y") {
-        alert("Type Y or N");
-        q = prompt("Can we get your location (It's optional)? Y or N ");
-      }
-
-      navigator.geolocation.getCurrentPosition(
-        function (e) {
-          localStorage.setItem("location", JSON.stringify([e.coords.latitude, e.coords.longitude]));
-        },
-        function () {
-          alert("Could not get your position");
-        }
-      );
-    }
-  };
 
   useEffect(() => {
     localStorage.setItem("markers", JSON.stringify(markers));
@@ -111,7 +83,6 @@ const Map = () => {
         wheelDebounceTime={100}
         whenReady={(map) => {
           MapRef = map;
-          getLoc();
           setIsLoaded(true);
         }}
       >
