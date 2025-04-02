@@ -1,5 +1,5 @@
 .detail {
-  flex: 1;
+  flex-shrink: 1;
   display: flex;
   flex-direction: column;
   word-wrap: break-word;
@@ -113,6 +113,11 @@
       p {
         max-width: 740px;
       }
+    }
+
+    button {
+      max-width: 800px;
+      width: 75%;
     }
   }
 }

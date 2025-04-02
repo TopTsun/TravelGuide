@@ -66,7 +66,7 @@ const Detail = () => {
   };
 
   const getLoc = () => {
-    if (navigator.geolocation && !JSON.parse(localStorage.getItem("location"))) {
+    if (navigator.geolocation) {
       let q = prompt(
         "Can we get your location (show's your position if there are no markers, you only give it once)? Y or N"
       );
@@ -113,7 +113,11 @@ const Detail = () => {
           </p>
         </div>
       ))}
-      {JSON.parse(localStorage.getItem("location")) ? "" : <button onClick={getLoc}>Add location</button>}
+      {JSON.parse(localStorage.getItem("location")) ? (
+        <button onClick={getLoc}>Update location</button>
+      ) : (
+        <button onClick={getLoc}>Add location</button>
+      )}
     </div>
   );
 };
