@@ -38,3 +38,9 @@
   width: auto !important;
   max-width: 100%;
 }
+
+@media screen and (max-width: 1000px) {
+  .map {
+    border-left: none;
+  }
+}
