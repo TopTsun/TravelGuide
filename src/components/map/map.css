@@ -30,14 +30,14 @@
   transition-duration: 100ms;
 }
 
-.leaflet-popup-content {
+/* .leaflet-popup-content {
   word-wrap: break-word;
   display: flex;
   align-items: center;
   justify-content: center;
   width: auto !important;
-  max-width: 100%;
-}
+  max-width: 100px;
+} */
 
 @media screen and (max-width: 1000px) {
   .map {
