@@ -21,10 +21,6 @@ const Detail = () => {
 
     let popUp = prompt("Enter description: ", markers[elIndex].popUp);
     if (!popUp) return;
-    while (popUp.length > 25) {
-      alert("Keep the description length to 25 chars or less");
-      popUp = prompt("Enter description: ", markers[elIndex].popUp);
-    }
 
     const updatedArray = markers;
     updatedArray[elIndex].popUp = popUp;
