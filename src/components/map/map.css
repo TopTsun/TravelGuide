@@ -41,6 +41,7 @@
 
 @media screen and (max-width: 1000px) {
   .map {
-    border-left: none;
+    border: 0px solid #fff;
+    border-bottom: 5px solid rgb(128, 128, 128);
   }
 }
