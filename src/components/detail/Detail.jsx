@@ -37,8 +37,8 @@ const Detail = () => {
     });
 
     let q = prompt("Do you want to delete that marker? Y/N", "Y");
-    if (!q || q == "N" || q == "n") return;
-    while (q.length > 1 || q != "Y" || q != "y") {
+    if (!q || q.toLowerCase() == "n") return;
+    while (q.length > 1 || q.toLowerCase() != "y") {
       alert("Type Y or N");
       q = prompt("Do you want to delete that marker? Y/N", "Y");
     }
@@ -66,9 +66,9 @@ const Detail = () => {
       let q = prompt(
         "Can we get your location (show's your position if there are no markers, you only give it once)? Y or N"
       );
-      if (!q || q == "N" || q == "n") return;
+      if (!q || q.toLowerCase() == "n") return;
 
-      while (q.length > 1 || q != "Y" || q != "y") {
+      while (q.length > 1 || q.toLowerCase() != "y") {
         alert("Type Y or N");
         q = prompt("Can we get your location? Y or N ");
       }
