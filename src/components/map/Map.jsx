@@ -24,6 +24,7 @@ const Map = () => {
   const [centerCoords] = useState(
     JSON.parse(localStorage.getItem("location")) || [48.142513132254685, 8.020603345827292]
   );
+  // const [mapStyle, setMapStyle] = useState(1);
 
   useEffect(() => {
     localStorage.setItem("markers", JSON.stringify(markers));
@@ -90,8 +91,12 @@ const Map = () => {
           <>
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-              url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+              url={localStorage.getItem("mapStyle") || "https://tile.openstreetmap.org/{z}/{x}/{y}.png"}
             />
+            {/* <TileLayer
+                attribution="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}, "
+                url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+              /> */}
 
             <MarkerClusterGroup chunkedLoading iconCreateFunction={createClusterCustomIcon}>
               {markers.map((m) => (

@@ -85,6 +85,22 @@ const Detail = () => {
     }
   };
 
+  const changeStyle = () => {
+    MapRef.target._layers[30]._url =
+      MapRef.target._layers[30]._url == "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+        ? "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+        : "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
+
+    MapRef.target._resetView(MapRef.target.getBounds().getCenter(), MapRef.target._zoom, false);
+
+    localStorage.setItem(
+      "mapStyle",
+      MapRef.target._layers[30]._url == "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+        ? "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+        : "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+    );
+  };
+
   const filteredMarkers = markers.filter((c) => c.popUp.toLowerCase().includes(input.toLowerCase()));
 
   return (
@@ -109,11 +125,15 @@ const Detail = () => {
           </p>
         </div>
       ))}
+      {markers[0] ? <div className="separator"></div> : ""}
       {JSON.parse(localStorage.getItem("location")) ? (
         <button onClick={getLoc}>Update location</button>
       ) : (
         <button onClick={getLoc}>Add location</button>
       )}
+      <button onClick={changeStyle} className="changeStyle">
+        Change map style
+      </button>
     </div>
   );
 };

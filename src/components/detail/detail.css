@@ -84,6 +84,14 @@
     cursor: pointer;
   }
 
+  .separator {
+    width: 90%;
+    max-width: 430px;
+    background-color: rgba(128, 128, 128, 0.803);
+    height: 5px;
+    margin-left: 5%;
+  }
+
   ::-webkit-scrollbar {
     width: 10px;
   }
