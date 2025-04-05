@@ -86,14 +86,14 @@ const Detail = () => {
   };
 
   const changeStyle = () => {
+    console.log(MapRef.target);
+    console.log(MapRef.target._layers);
     MapRef.target._layers[30]._url =
       MapRef.target._layers[30]._url == "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
         ? "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
         : "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
 
     MapRef.target._resetView(MapRef.target.getBounds().getCenter(), MapRef.target._zoom, false);
-    console.log(MapRef.target);
-    console.log(MapRef.target._layers);
 
     localStorage.setItem(
       "mapStyle",
