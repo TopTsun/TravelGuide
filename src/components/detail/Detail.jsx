@@ -88,6 +88,8 @@ const Detail = () => {
   const changeStyle = () => {
     console.log(MapRef.target);
     console.log(MapRef.target._layers);
+    alert(MapRef.target);
+    alert(MapRef.target._layers);
     MapRef.target._layers[30]._url =
       MapRef.target._layers[30]._url == "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
         ? "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
