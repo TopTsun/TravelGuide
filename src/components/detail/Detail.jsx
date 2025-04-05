@@ -92,6 +92,8 @@ const Detail = () => {
         : "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
 
     MapRef.target._resetView(MapRef.target.getBounds().getCenter(), MapRef.target._zoom, false);
+    console.log(MapRef.target);
+    console.log(MapRef.target._layers);
 
     localStorage.setItem(
       "mapStyle",
