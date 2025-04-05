@@ -43,7 +43,7 @@ const Detail = () => {
       q = prompt("Do you want to delete that marker? Y/N", "Y");
     }
 
-    if (q == "Y") {
+    if (q.toLowerCase() == "y") {
       const updatedArray = markers;
       if (elIndex > -1) {
         updatedArray.splice(elIndex, 1);
