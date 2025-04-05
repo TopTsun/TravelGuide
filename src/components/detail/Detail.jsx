@@ -86,8 +86,8 @@ const Detail = () => {
   };
 
   const changeStyle = () => {
-    MapRef.target._layers[28]._url =
-      MapRef.target._layers[28]._url == "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+    Object.values(MapRef.target._layers)[1]._url =
+      Object.values(MapRef.target._layers)[1]._url == "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
         ? "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
         : "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
 
@@ -95,7 +95,7 @@ const Detail = () => {
 
     localStorage.setItem(
       "mapStyle",
-      MapRef.target._layers[28]._url == "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+      Object.values(MapRef.target._layers)[1]._url == "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
         ? "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
         : "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
     );
