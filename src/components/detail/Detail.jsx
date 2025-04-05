@@ -86,23 +86,19 @@ const Detail = () => {
   };
 
   const changeStyle = () => {
-    try {
-      MapRef.target._layers[28]._url =
-        MapRef.target._layers[28]._url == "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
-          ? "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
-          : "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
+    MapRef.target._layers[28]._url =
+      MapRef.target._layers[28]._url == "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+        ? "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+        : "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
 
-      MapRef.target._resetView(MapRef.target.getBounds().getCenter(), MapRef.target._zoom, false);
+    MapRef.target._resetView(MapRef.target.getBounds().getCenter(), MapRef.target._zoom, false);
 
-      localStorage.setItem(
-        "mapStyle",
-        MapRef.target._layers[30]._url == "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
-          ? "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
-          : "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
-      );
-    } catch (error) {
-      alert(error);
-    }
+    localStorage.setItem(
+      "mapStyle",
+      MapRef.target._layers[28]._url == "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+        ? "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+        : "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+    );
   };
 
   const filteredMarkers = markers.filter((c) => c.popUp.toLowerCase().includes(input.toLowerCase()));
